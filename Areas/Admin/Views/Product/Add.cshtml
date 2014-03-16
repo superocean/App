@@ -1,0 +1,87 @@
+﻿@model XPGroup.Models.Product
+@using XPGroup.Models
+@{
+    ViewBag.Title = "Add";
+}
+<div class="content-box">
+    <!-- Start Content Box -->
+
+    <div class="content-box-header">
+
+        <h3>Add Product</h3>
+        <ul class="content-box-tabs">
+            <li><a href="#tab1" class="default-tab">Product</a></li>
+            <li><a href="#tab2">Picture</a></li>
+            <li><a href="#tab3">Attribute</a></li>
+        </ul>
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="content-box-content">
+        @using (@Html.BeginForm())
+        {
+            <div class="tab-content default-tab" id="tab1">
+
+                <p>
+                    <label>Product name</label>
+                    @Html.TextBoxFor(c => c.Name, new { @class = "text-input large-input" })
+                    @Html.ValidationMessageFor(c => c.Name)
+                </p>
+                <p>
+                    <label>Category</label>
+                    @Html.ParentChildDropdownlistFor(c => c.CategoryId, (List<SelectListItemParent>)ViewBag.Categories, new { @class = "dropdownlist" }, "ddlparent", "ddlchild", false, "--Root category--", true)
+                </p>
+                <p>
+                    <label>Description</label>
+                    @Html.TextAreaFor(c => c.Description, new { @class = "text-input textarea" })
+                </p>
+                <p>
+                    <label>Content</label>
+                    @Html.CKEditorFor(c => c.Content, 20, 70)
+                </p>
+                <p>
+                    <label>Price</label>
+                    @Html.TextBoxFor(c => c.Price, new { @class = "text-input large-input", @Value = "0" })
+                    @Html.ValidationMessageFor(c => c.Price)
+                </p>
+                <p>
+                    <label>Old Price</label>
+                    @Html.TextBoxFor(c => c.OldPrice, new { @class = "text-input large-input", @Value = "0" })
+                    @Html.ValidationMessageFor(c => c.OldPrice)
+                </p>
+                <p>
+                    @Html.CheckBoxFor(c => c.IsShowHomePage)<span class="spancheckbox">Show on home page</span>
+                </p>
+                <p>
+                    @Html.CheckBoxFor(c => c.IsShowBanner)<span class="spancheckbox">Show on banner</span>
+                </p>
+
+                <div class="clear">&nbsp;</div>
+            </div>
+            <div class="tab-content" id="tab2">
+                <div>
+                    <label>Product picture</label>
+                    @Html.ChooseFileFor(c => c.Image)
+                </div>
+                <p>
+                    <label>Other product pictures</label>
+                    @Html.ChooseFolderFor(c => c.OtherImages, "")
+                </p>
+            </div>
+            <div class="tab-content" id="tab3">
+                @Html.ProductAttributesDdlsFor(c => c.Attributes, (List<XPGroup.Models.Attribute>)ViewBag.Attributes)
+            </div>
+
+            <div class="button_bottom">
+                <div class="listbutton">
+                    <input type="submit" value="Save" class="button" />
+                </div>
+
+                <div class="listbutton">
+                    <a href="/Admin/Product" class="button_cancel">Cancel</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

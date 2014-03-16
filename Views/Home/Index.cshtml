@@ -1,0 +1,11 @@
+﻿@if (ShoppingCart.Cart != null)
+{
+    foreach (var item in ShoppingCart.Cart)
+    {
+    <div>@item.Name</div>
+    }
+}
+
+<form method="post" action="/Home/AddCart">
+    <input type="submit" value="Add To cart" />
+</form>

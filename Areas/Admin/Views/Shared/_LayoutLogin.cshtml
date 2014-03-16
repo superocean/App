@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/Content/css/admin/admin.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/Content/css/admin/blue.css" type="text/css" media="screen" />
+</head>
+
+<body id="login">
+
+    <div id="login-wrapper" class="png_bg">
+        <div id="login-top">
+            <h1>XPGroup Admin</h1>
+        </div>
+        <!-- End #logn-top -->
+        @RenderBody()
+        <!-- End #login-content -->
+    </div>
+    <!-- End #login-wrapper -->
+</body>
+</html>

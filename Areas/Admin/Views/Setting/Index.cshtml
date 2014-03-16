@@ -1,0 +1,65 @@
+﻿@model XPGroup.Models.Settings
+@using XPGroup.Models
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="content-box">
+    <!-- Start Content Box -->
+
+    <div class="content-box-header">
+        <h3>Edit Admin User And Smtp Server</h3>
+        <ul class="content-box-tabs">
+            <li><a href="#tab1" class="default-tab">Admin user</a></li>
+            <li><a href="#tab2">Smtp server</a></li>
+        </ul>
+    </div>
+
+    <div class="content-box-content">
+        @using (@Html.BeginForm())
+        {
+            <div class="tab-content default-tab" id="tab1">
+
+                <p>
+                    <label>User name</label>
+                    @Html.TextBoxFor(c => c.AdminUser.Username, new { @class = "text-input large-input" })
+                </p>
+                <p>
+                    <label>Password</label>
+                    @Html.PasswordFor(c => c.AdminUser.Password, new { @class = "text-input large-input" })
+                </p>
+                <div class="clear">&nbsp;</div>
+            </div>
+            <div class="tab-content" id="tab2">
+                <p>
+                    <label>Smtp server</label>
+                    @Html.TextBoxFor(c => c.SmtpSetting.SmtpServer, new { @class = "text-input large-input" })
+                </p>
+                <p>
+                    <label>User name</label>
+                    @Html.TextBoxFor(c => c.SmtpSetting.Username, new { @class = "text-input large-input" })
+                </p>
+                <p>
+                    <label>Password</label>
+                    @Html.PasswordFor(c => c.SmtpSetting.Password, new { @class = "text-input large-input" })
+                </p>
+                <p>
+                    <label>Port</label>
+                    @Html.TextBoxFor(c => c.SmtpSetting.Port, new { @class = "text-input large-input" })
+                </p>
+                <p>
+                    @Html.CheckBoxFor(c => c.SmtpSetting.IsSSL)<span class="spancheckbox">Use SSL</span>
+                </p>
+            </div>
+
+            <div class="button_bottom">
+                <div class="listbutton">
+                    <input type="submit" value="Save" class="button" />
+                </div>
+
+                <div class="listbutton">
+                    <a href="/Admin" class="button_cancel">Cancel</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

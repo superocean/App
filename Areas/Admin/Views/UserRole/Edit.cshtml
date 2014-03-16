@@ -1,0 +1,41 @@
+﻿@using XPGroup.Models
+@model UserRole
+@{
+    ViewBag.Title = "Add";
+}
+
+<div class="content-box">
+    <!-- Start Content Box -->
+
+    <div class="content-box-header">
+
+        <h3>Edit user role</h3>
+    </div>
+
+    <div class="content-box-content">
+
+        <div class="tab-content default-tab">
+            <!-- This is the target div. id must match the href of this div's tab -->
+            @using (@Html.BeginForm())
+            {
+                @Html.HiddenFor(c => c.RoleId);
+                <p>
+                    <label>User role name</label>
+                    @Html.TextBoxFor(c => c.RoleName, new { @class = "text-input large-input" })
+                    @Html.ValidationMessageFor(c => c.RoleName)
+                </p>
+
+                <div class="button_bottom">
+                    <div class="listbutton">
+                        <input type="submit" value="Save" class="button" />
+                    </div>
+
+                    <div class="listbutton">
+                        <a href="/Admin/UserRole" class="button_cancel">Cancel</a>
+                    </div>
+                </div>
+            }
+            <div class="clear">&nbsp;</div>
+        </div>
+    </div>
+</div>

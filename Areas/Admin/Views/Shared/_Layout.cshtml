@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/Content/css/admin/admin.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/Content/css/admin/blue.css" type="text/css" media="screen" />
+    <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+    <!-- Internet Explorer Fixes Stylesheet -->
+
+    <!--[if lte IE 7]>
+			<link rel="stylesheet" href="/Content/css/adminie.css" type="text/css" media="screen" />
+		<![endif]-->
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    <script src="~/Scripts/jquery-ui-1.9.0.js"></script>
+    <!-- jQuery Configuration -->
+    <script type="text/javascript" src="~/Scripts/simpla.jquery.configuration.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/js/admin.js"></script>
+    @Html.CKEditorHeaderScripts();
+</head>
+<body>
+    <div id="body-wrapper">
+        <!-- Wrapper for the radial gradient background -->
+
+        <div id="sidebar">
+            <div id="sidebar-wrapper">
+                <!-- Sidebar with logo and menu -->
+
+                <h1 id="sidebar-title"><a href="#">Simpla Admin</a></h1>
+
+                <!-- Logo (221px wide) -->
+                <a href="#">
+                    <img id="logo" src="/Content/images/admin/logo.png" alt="Simpla Admin logo" /></a>
+
+                <!-- Sidebar Profile links -->
+                <div id="profile-links">
+                    <a href="#" title="View the Site">View the Site</a> | <a href="#" title="Sign Out">Sign Out</a>
+                </div>
+
+                <ul id="main-nav">
+                    <!-- Accordion Menu -->
+                    <li>
+                        <a href="#" class="nav-top-item">Products
+                        </a>
+                        <ul>
+                            <li><a href="/Admin/Category" class="sub-menu-item current">Manage Category</a></li>
+                            <li><a href="/Admin/Product" class="sub-menu-item">Manage Product</a></li>
+                            <li><a href="/Admin/Attribute" class="sub-menu-item">Product Attribute</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#" class="nav-top-item">News
+                        </a>
+                        <ul>
+                            <li><a href="/Admin/NewsCategory" class="sub-menu-item">Manage Category</a></li>
+                            <li><a href="/Admin/ManageNews" class="sub-menu-item">Manage News</a></li>
+                        </ul>
+                    </li>
+
+                    @*<li>
+                                                <a href="#" class="nav-top-item">User
+                                                </a>
+                                                <ul>
+                                                    <li><a href="/Admin/UserRole" class="sub-menu-item">Manage Role</a></li>
+                                                    <li><a href="/Admin/User" class="sub-menu-item">Manage User</a></li>
+                                                </ul>
+                                            </li>*@
+
+                    <li>
+                        <a href="#" class="nav-top-item">Text
+                        </a>
+                        <ul>
+                            <li><a href="/Admin/AboutUs" class="sub-menu-item">About us</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#" class="nav-top-item">Settings
+                        </a>
+                        <ul>
+                            <li><a href="/Admin/Setting" class="sub-menu-item">Website</a></li>
+                            @*<li><a href="#" class="sub-menu-item">Users and Permissions</a></li>*@
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" onclick="browserServerCKE();" class="nav-top-item">File Manager
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- End #sidebar -->
+
+        <div id="main-content">
+            @RenderBody()
+            <div id="footer">
+                <small>&#169; Copyright 2012 Admin
+                </small>
+            </div>
+        </div>
+        <!-- End #main-content -->
+    </div>
+    <div style="display: none;" id="dialog-confirm" title="Delete item?">
+        <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Are you sure delete item?</p>
+    </div>
+</body>
+</html>

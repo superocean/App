@@ -1,0 +1,65 @@
+﻿@model XPGroup.Models.News
+@using XPGroup.Models
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="content-box">
+    <!-- Start Content Box -->
+
+    <div class="content-box-header">
+
+        <h3>Edit News</h3>
+        <ul class="content-box-tabs">
+            <li><a href="#tab1" class="default-tab">News</a></li>
+            <li><a href="#tab2">Picture</a></li>
+        </ul>
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="content-box-content">
+        @using (@Html.BeginForm())
+        {
+            @Html.HiddenFor(c => c.NewsId)
+            @Html.HiddenFor(c => c.Date)
+            <div class="tab-content default-tab" id="tab1">
+
+                <p>
+                    <label>News name</label>
+                    @Html.TextBoxFor(c => c.Title, new { @class = "text-input large-input" })
+                    @Html.ValidationMessageFor(c => c.Title)
+                </p>
+                <p>
+                    <label>Category</label>
+                    @Html.ParentChildDropdownlistFor(c => c.CategoryId, (List<SelectListItemParent>)ViewBag.Categories, new { @class = "dropdownlist" }, "ddlparent", "ddlchild", false, "--Root category--", true)
+                </p>
+                <p>
+                    <label>Description</label>
+                    @Html.TextAreaFor(c => c.Description, new { @class = "text-input textarea" })
+                </p>
+                <p>
+                    <label>Content</label>
+                    @Html.CKEditorFor(c => c.Content, 20, 70)
+                </p>
+
+                <div class="clear">&nbsp;</div>
+            </div>
+            <div class="tab-content" id="tab2">
+                <div>
+                    <label>News picture</label>
+                    @Html.ChooseFileFor(c => c.Image)
+                </div>
+            </div>
+
+            <div class="button_bottom">
+                <div class="listbutton">
+                    <input type="submit" value="Save" class="button" />
+                </div>
+
+                <div class="listbutton">
+                    <a href="/Admin/ManageNews" class="button_cancel">Cancel</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

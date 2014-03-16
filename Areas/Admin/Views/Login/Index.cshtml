@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutLogin.cshtml";
+}
+@model XPGroup.Models.AdminUser
+@{
+    ViewBag.Title = "Admin Login";
+}
+
+<div id="login-content">
+
+    <form action="/Admin/Login" method="post">
+        <div class="notification information png_bg">
+            <div style="padding-top: 30px; padding-left: 85px; color: red;">
+                @ViewBag.Message
+            </div>
+        </div>
+        <p>
+            <label>Username</label>
+            @Html.TextBoxFor(c => c.Username, new { @class = "text-input" });
+        </p>
+        <div class="clear"></div>
+        <p>
+            <label>Password</label>
+            @Html.PasswordFor(c => c.Password, new { @class = "text-input" });
+        </p>
+        <div class="clear"></div>
+        <p id="remember-password">
+            <input class="check-box" type="checkbox" />Remember me
+        </p>
+        <div class="clear"></div>
+        <p style="float: right; margin-top: -10px;">
+            <input class="button" type="submit" value="Sign In" />
+        </p>
+    </form>
+</div>

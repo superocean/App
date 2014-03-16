@@ -1,0 +1,34 @@
+﻿@model XPGroup.Models.HtmlText
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="content-box">
+    <!-- Start Content Box -->
+
+    <div class="content-box-header">
+
+        <h3>Edit About us</h3>
+    </div>
+
+    <div class="content-box-content">
+
+        <div class="tab-content default-tab">
+            @using (@Html.BeginForm())
+            {
+                @Html.HiddenFor(c => c.Name);
+                @Html.HiddenFor(c => c.HtmlId);
+                <p>
+                    <label>Content</label>
+                    @Html.CKEditorFor(c => c.Content, 20, 70)
+                </p>
+                <div class="button_bottom">
+                    <div class="listbutton">
+                        <input type="submit" value="Save" class="button" />
+                    </div>
+                </div>
+            }
+            <div class="clear">&nbsp;</div>
+        </div>
+    </div>
+</div>

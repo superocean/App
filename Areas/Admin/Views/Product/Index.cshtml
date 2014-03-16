@@ -1,0 +1,96 @@
+﻿@model XPGroup.Models.ViewModels.ProductViews
+@using XPGroup.Models.ViewModels
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="content-box">
+    <!-- Start Content Box -->
+
+    <div class="content-box-header">
+        <div class="top_box_content_left">
+            <span>Category &nbsp;&nbsp;</span>
+            @Html.ParentChildDropdownlist("categorysearch", (List<SelectListItemParent>)ViewBag.Categories, new { @class = "dropdownlist" }, "ddlparent", "ddlchild", true, "--All category--", true)
+        </div>
+        <div class="top_box_content_right">
+            <div id="wrapper_search">
+                <span>Search by name &nbsp;&nbsp;</span>
+                <input id="txtSearchbox" class="txtSearchbox" type="text" name="txtSearchbox" value="" />
+                <div id="button_search_product"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+
+        <div class="tab-content default-tab">
+            <!-- This is the target div. id must match the href of this div's tab -->
+
+            <div class="notification attention png_bg" style="display: none">
+                <a href="#" class="close">
+                    <img src="/Content/images/admin/icons/cross_grey_small.png" title="Close this notification" alt="close" /></a>
+                <div id="message_notification">
+                </div>
+            </div>
+            <table class="admin_management">
+
+                <thead>
+                    <tr>
+                        <th><span id="sort_by_name">Product Name</span></th>
+                        <th>Category Name</th>
+                        <th><span id="sort_by_price">Price</span></th>
+                        <th>Show Home Page</th>
+                        <th>Show Banner</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var parent in @Model.Products)
+                    {
+                        <tr>
+                            <td>@parent.Name</td>
+                            <td>@parent.CategoryName</td>
+                            <td>@parent.Price.ToString()</td>
+                            <td>
+                                @if (@parent.IsShowHomePage)
+                                {
+                                    <input class="setShowHomePage" type="checkbox" value="@parent.ProductId" checked="checked" />
+                                }
+                                else
+                                {
+                                    <input class="setShowHomePage" type="checkbox" value="@parent.ProductId" />
+                                }
+                            </td>
+                            <td>
+                                @if (@parent.IsShowBanner)
+                                {
+                                    <input class="setShowBanner" type="checkbox" value="@parent.ProductId" checked="checked" />
+                                }
+                                else
+                                {
+                                    <input class="setShowBanner" type="checkbox" value="@parent.ProductId" />
+                                }
+                            </td>
+                            <td>
+                                <!-- Icons -->
+                                <a href="/Admin/Product/Edit/@parent.ProductId.ToString()" title="Edit">
+                                    <img src="/Content/images/admin/icons/pencil.png" class="edit_category" alt="Edit" /></a>
+                                <a class="delete" ref="/Admin/Product/Delete" href="@parent.ProductId.ToString()" title="Delete">
+                                    <img src="/Content/images/admin/icons/cross.png" alt="Delete" /></a>
+                                <a class="updateProductView" href="@parent.ProductId.ToString()" title="Update">
+                                    <img src="/Content/images/admin/icons/tick_circle.png" alt="Update" />
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="pagination">
+                @Html.Paging(@Model.AllItemsCount, 2, 10, "number", "button_paging")
+            </div>
+            <!-- End .pagination -->
+            <div class="clear"></div>
+            <p class="button_wrapper"><a href="/Admin/Product/Add" class="button" title="Add new product">Add product</a></p>
+        </div>
+    </div>
+</div>
