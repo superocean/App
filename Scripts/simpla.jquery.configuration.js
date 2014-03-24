@@ -125,7 +125,7 @@ function Setup() {
             $(item).parent().parent().css("display", "block");
         }
     });
-    //$("table.admin_management tr:even").addClass("altrow");
+    $("table.admin_management tr:even").addClass("altrow");
 }
 function GetHeightPopup() {
     return window.screen.height - 200;

@@ -30,7 +30,8 @@ namespace XPGroup.Areas.Admin.Controllers
         public ActionResult Add()
         {
             ViewBag.Categories = categoryRepository.GetParentChildCategory();
-            return View();
+            Category category = new Category() { SortOrder = 0 };
+            return View(category);
         }
 
         //

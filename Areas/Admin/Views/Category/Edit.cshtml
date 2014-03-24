@@ -9,17 +9,12 @@
     <div class="content-box-header">
 
         <h3>Add Category</h3>
-        <ul class="content-box-tabs">
-            <li><a href="#tab1" class="default-tab">Category</a></li>
-        </ul>
-
-        <div class="clear"></div>
     </div>
 
     <div class="content-box-content">
         @using (@Html.BeginForm())
         {
-            <div class="tab-content default-tab" id="tab1">
+            <div class="tab-content default-tab">
 
                 <p>
                     <label>Category name</label>
@@ -28,7 +23,12 @@
                 </p>
                 <p>
                     <label>Parent Category</label>
-                    @Html.ParentChildDropdownlistFor(c => c.CategoryId, (List<SelectListItemParent>)ViewBag.Categories, new { @class = "dropdownlist" }, "ddlparent", "ddlchild", false, "--Root category--", true)
+                    @Html.ParentChildDropdownlistFor(c => c.ParentId, (List<SelectListItemParent>)ViewBag.Categories, new { @class = "dropdownlist" }, "ddlparent", "ddlchild", true, "--Root category--", true)
+                </p>
+                <p>
+                    <label>Sort Order</label>
+                    @Html.TextBoxFor(c => c.SortOrder);
+                    @Html.ValidationMessageFor(c => c.SortOrder)
                 </p>
                 <p>
                     <label>Description</label>
