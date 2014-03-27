@@ -14,6 +14,7 @@
     <div class="content-box-content">
         @using (@Html.BeginForm())
         {
+            @Html.HiddenFor(c => c.CategoryId);
             <div class="tab-content default-tab">
 
                 <p>
@@ -27,7 +28,7 @@
                 </p>
                 <p>
                     <label>Sort Order</label>
-                    @Html.TextBoxFor(c => c.SortOrder);
+                    @Html.TextBoxFor(c => c.SortOrder)
                     @Html.ValidationMessageFor(c => c.SortOrder)
                 </p>
                 <p>

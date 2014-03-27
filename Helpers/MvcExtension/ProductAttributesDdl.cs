@@ -44,7 +44,7 @@ namespace System.Web.Mvc
                 {
                     foreach (var option in item.Attributes)
                     {
-                        sb.Append("<option value=\"" + option.Value + "\">" + option.Value + "</option>");
+                        sb.Append("<option" + ((option.Value.ToLower().Trim() == item.Value.ToLower().Trim()) ? " selected=\"selected\"" : string.Empty) + " value=\"" + option.Value + "\">" + option.Value + "</option>");
                     }
                 }
 
