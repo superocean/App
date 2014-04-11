@@ -57,6 +57,9 @@
     <Reference Include="Ninject.Web.Mvc">
       <HintPath>..\Implementation\MyApp\packages\Ninject.MVC3.3.0.0.6\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="NLog">
+      <HintPath>packages\NLog.2.1.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -201,6 +204,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductAttributeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserRoleController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Helpers\MvcExtension\CKEditorHelpers.cs" />
     <Compile Include="Helpers\MvcExtension\ChooseFile.cs" />
     <Compile Include="Helpers\MvcExtension\ChooseFolder.cs" />
@@ -381,6 +385,12 @@
     <Content Include="Areas\Admin\Views\Setting\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -470,6 +480,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Data\" />
+    <Folder Include="Log\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
